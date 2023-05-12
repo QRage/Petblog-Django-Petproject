@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Login</h2>
+  <form method="post" class="form-horizontal">
+    {% csrf_token %}
+    <div class="form-group">
+        {{ form.username }}
+    </div>
+    <div class="form-group">
+        {{ form.password }}
+    </div>
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-primary">Log in</button>
+        <span class="ml-2">Don't have an account yet?</span>
+        <a class="ml-1" href="{% url 'signup' %}">Sign Up</a>
+      </div>
+    </form>
+    <script>
+    var form_fields = document.getElementsByTagName('input')
+    form_fields[1].placeholder='Username';
+    form_fields[2].placeholder='Password';
+
+    for (var field in form_fields){
+        form_fields[field].className += ' form-control'
+    }
+    </script>
+{% endblock %}

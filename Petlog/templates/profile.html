@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>User profile</h2>
+    <p>Login: {{ user.username }}</p>
+    <p>Password: ***hidden*** <a href="{% url 'change_password' %}">change</a></p>
+    <p>E-mail: {{ user.email }}</p>
+    <p>Posts count: {{ post_count }}</p>
+
+{% endblock %}
