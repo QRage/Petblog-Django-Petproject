@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 
 from .forms import CreateUserForm, ChangePasswordForm, NewsPostForm
-from .models import NewPost, Profile
+from .models import NewPost
 
 
 def signup(request):
@@ -37,7 +37,7 @@ def login_view(request):
 
 def home(request):
     user = request.user
-    posts = NewPost.objects.all()
+    posts = NewPost.objects.order_by('-pub_date')
 
     context = {
         'user': user,
